@@ -4,10 +4,12 @@ date: 2017-01-01
 title: 'Web Storage: Cookies, Local Storage, and Session Storage'
 description: 'A simplified article describing cookies, local and session storage.'
 published: true
-banner: './banner.png'
+banner: './storage.jpg'
 ---
 
-There are many times in our application where we need to store data to the user’s browser. This could be a token, a list of items in a cart, user theme preferences, or literally any other data! This article will walk you through cookies, local storage, and session storage: where they differ, their use-cases, and their specifics.
+Photo courtesy: [MyVenturePad](https://myventurepad.com/save-money-starting-business-storage-unit/)
+
+There are many times in our application where we need to store data on the user’s browser. This could be a token, a list of items in a cart, user theme preferences, or literally any other data! This article will walk you through cookies, local storage, and session storage: where they differ, their use-cases, and their specifics.
 
 ## Cookies
 
@@ -32,11 +34,11 @@ Every time you access `document.cookie`, you are essentially _creating a new rec
 
 Cookies are just strings, they're not JSON serialiable data, this is why people build abstractions like [`js-cookie`](https://github.com/js-cookie/js-cookie) allows you to set and parse data from the cookies.
 
-If you have used local or sesssion storage before, you might ask "if local storage and session storage can achieve the same storage capability as cookies, or even bigger storage capacity, then why use it?"
+If you have used local or session storage before, you might ask "if local storage and session storage can achieve the same storage capability as cookies with an even bigger storage capacity, then why use it?"
 
 Stormpath has written an amazing [article](https://stormpath.com/blog/where-to-store-your-jwts-cookies-vs-html5-web-storage) on how cookies are much safer than local or session storage when storing sensitive user data (e.g JWT tokens).
 
-Cookies are also _sent to the server for every corresponding request_ you send to it, may it be an image, a css file, or a post request, the cookies are added to the request. This is why reason why cookies are limited to 4KB, so as not to add unnecessary overhead to _every single request you send to the server_.
+Cookies are also _sent to the server for every corresponding request_ you send to it, may it be an image, a CSS file, or a post request, the cookies are added to the request. This is the reason why cookies are limited to 4KB, so as not to add unnecessary overhead to _every single request you send to the server_.
 
 ## Local Storage
 
@@ -44,7 +46,7 @@ Since HTML5, local storage provided another alternative to storing key-value pai
 
 It's pretty straightforward to use the local storage API from the browser.
 
-For simplity, here are the 4 CRUD (create-read-update-delete) interfaces the local storage API provides:
+For simplicity, here are the 4 CRUD (create-read-update-delete) interfaces the local storage API provides:
 
 ```
 /**
@@ -67,13 +69,13 @@ localStorage.clear()
 
 Always take note that local storage stays in the user's browser _forever_, until they clear their browser's cache or manually clear their local storage via DevTools (will expound on this later in this article). There is no expiration unlike with cookies.
 
-Local storage can also be accessed by the browser only and, unlike cookies, is _not_ sent to the server for every request. Therefore, adding more properties isn't an overhead.
+Local storage can also be accessed by the browser only and, unlike cookies, is _not_ sent to the server for every request. Therefore, adding more properties isn't overhead.
 
 ## Session Storage
 
-Session storage is very similar to local storage, in fact, it shares the same interface! (They both share a [Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) interface).
+Session storage is very similar to local storage, it shares the same interface! (They both share a [Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage) interface).
 
-You can use them the exact same way with local storage, except with `sessionStorage` this time.
+You can use them the exact way with local storage, except with `sessionStorage` this time.
 
 ```
 sessionStorage.setItem('key', 'value')
@@ -85,7 +87,7 @@ The key difference with this and local storage is the expiration and the storage
 
 ## DevTools Support
 
-Most popular browsers support this. For chrome: you can open the developer tools (right click anywhere on the page, then click Inspect). Go to "Application" tab. Under "storage", you'll find all three of them:
+Most popular browsers support this. For chrome: you can open the developer tools (right-click anywhere on the page, then click Inspect). Go to "Application" tab. Under "Storage", you'll find all three of them:
 
 ![alt text](./devtools.png 'Logo Title Text 1')
 
