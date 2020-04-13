@@ -4,6 +4,15 @@ date: 2017-01-01
 title: 'Web Storage: Cookies, Local Storage, and Session Storage'
 description: 'A simplified article describing cookies, local and session storage.'
 published: true
+keywords:
+  [
+    'cookie',
+    'cookies',
+    'local storage',
+    'session storage',
+    'web api',
+    'web storage',
+  ]
 banner: './storage.jpg'
 ---
 
