@@ -14,7 +14,7 @@ module.exports = {
   // siteFBAppID: '123456789', // Facebook App ID - Optional
   userTwitter: '@lawrencetecho', // Twitter Username
   ogLanguage: 'en_US',
-  googleAnalyticsID: '',
+  googleAnalyticsID: 'UA-77657080-2',
 
   // Manifest and Progress color
   themeColor: '#24292f',
