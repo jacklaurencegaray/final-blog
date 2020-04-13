@@ -17,7 +17,7 @@ const Footer = ({ author, noSubscribeForm }) => (
     >
       {!noSubscribeForm && (
         <div>
-          <SubscribeForm />
+          {/* <SubscribeForm /> */}
           <br />
           <br />
         </div>

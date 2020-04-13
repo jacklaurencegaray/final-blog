@@ -1,7 +1,7 @@
 ---
-slug: demo-01
-date: 2017-01-01
-title: 'Web Storage: Cookies, Local Storage, and Session Storage'
+slug: web-storage-cookies-local-session
+date: 2019-05-19
+title: 'Web Storage: Cookies vs Local and Session Storage'
 description: 'A simplified article describing cookies, local and session storage.'
 published: true
 keywords:
@@ -14,9 +14,10 @@ keywords:
     'web storage',
   ]
 banner: './storage.jpg'
+caption: 'something something'
+author: 'Jack Garay'
+excerpt: "Getting to know the browser's storage capabilities, their use cases, differences, and specifics."
 ---
-
-Photo courtesy: [MyVenturePad](https://myventurepad.com/save-money-starting-business-storage-unit/)
 
 There are many times in our application where we need to store data on the user’s browser. This could be a token, a list of items in a cart, user theme preferences, or literally any other data! This article will walk you through cookies, local storage, and session storage: where they differ, their use-cases, and their specifics.
 
@@ -39,9 +40,15 @@ console.log(document.cookie)
 // name=Jack; theme=dark
 ```
 
-Every time you access `document.cookie`, you are essentially _creating a new record_ in the user's cookies, and accessing the final `document.cookie` returns to you an aggregate of all their assessment in a form of a string.
+Every time you set `document.cookie` to value, you are essentially _creating a new record_ in the user's cookies. Accessing the final `document.cookie` returns to you an aggregate of all their assignments in a form of a string.
 
-Cookies are just strings, they're not JSON serialiable data, this is why people build abstractions like [`js-cookie`](https://github.com/js-cookie/js-cookie) allows you to set and parse data from the cookies.
+The format of the aggregate string goes as follows:
+
+```
+key=value; anotherKey=anotherValue
+```
+
+Cookies are just strings, they're not JSON serialiable data, this is why people build abstractions like [`js-cookie`](https://github.com/js-cookie/js-cookie) that allows you to set and parse data from the cookies with ease.
 
 If you have used local or session storage before, you might ask "if local storage and session storage can achieve the same storage capability as cookies with an even bigger storage capacity, then why use it?"
 
@@ -51,15 +58,13 @@ Cookies are also _sent to the server for every corresponding request_ you send t
 
 ## Local Storage
 
-Since HTML5, local storage provided another alternative to storing key-value pairs with a maximum storage size of 10MB to the user's browser.
-
-It's pretty straightforward to use the local storage API from the browser.
-
-For simplicity, here are the 4 CRUD (create-read-update-delete) interfaces the local storage API provides:
+Since HTML5, local storage provided another alternative to storing key-value pairs with a maximum storage size of 10MB to the user's browser. It's a pretty much straightforward API to use:
 
 ```
 /**
-    window.localStorage is the more accurate way to access it, however, since anything we access in the global scope is assumed to be under `window`:
+    window.localStorage is the more accurate way to
+    access it, however, since anything we access
+    in the global scope is assumed to be under `window`, you can skip `window` and just proceed with `localStorage.<function>`
 **/
 
 // Setting and updating a property
@@ -76,9 +81,9 @@ localStorage.removeItem('theme')
 localStorage.clear()
 ```
 
-Always take note that local storage stays in the user's browser _forever_, until they clear their browser's cache or manually clear their local storage via DevTools (will expound on this later in this article). There is no expiration unlike with cookies.
+Always take note that local storage stays in the user's browser _forever_, until they clear their browser's cache or manually clear their local storage via DevTools (will expound on this later) so there is no expiration unlike with cookies.
 
-Local storage can also be accessed by the browser only and, unlike cookies, is _not_ sent to the server for every request. Therefore, adding more properties isn't overhead.
+Local storage can also be accessed by the browser only and, unlike cookies, is _not_ sent to the server for every request. Therefore, adding more properties won't add to the network request overhead.
 
 ## Session Storage
 
@@ -89,7 +94,6 @@ You can use them the exact way with local storage, except with `sessionStorage` 
 ```
 sessionStorage.setItem('key', 'value')
 sessionStorage.getItem('key')
-... // refer to localStorage example
 ```
 
 The key difference with this and local storage is the expiration and the storage capacity, session storage is much smaller (5MB), and expires _as soon as the user closes the tab_.
@@ -110,7 +114,7 @@ Most popular browsers support this. For chrome: you can open the developer tools
 | Sent with Requests | Yes                                |         No         |                         No |
 | Stored by          | Client and server                  |       Client       |                     Client |
 
-### Browser Support Links:
+## Browser Support Links:
 
 - [Local Storage](https://caniuse.com/#search=localstorage)
 - [Session Storage](https://caniuse.com/#search=localstorage)

@@ -13,9 +13,7 @@ const Hero = () => {
   return (
     <section
       css={css`
-        color: ${theme.colors.white};
         width: 100%;
-        background: ${theme.colors.primary};
         padding: 20px 0 30px 0;
         display: flex;
       `}
@@ -25,20 +23,7 @@ const Hero = () => {
           display: flex;
           flex-direction: column;
         `}
-      >
-        <h1
-          css={css`
-            color: ${theme.colors.white};
-            position: relative;
-            z-index: 5;
-            line-height: 1.5;
-            margin: 0;
-            max-width: ${rhythm(15)};
-          `}
-        >
-          Your blog says the things you want to say.
-        </h1>
-      </Container>
+      ></Container>
       <div
         css={css`
           height: 150px;
@@ -87,20 +72,14 @@ export default function Index({ data: { site, allMdx } }) {
                 {post.frontmatter.title}
               </Link>
             </h2>
-            <Description>
-              {post.excerpt}{' '}
-              <Link
-                to={post.frontmatter.slug}
-                aria-label={`View ${post.frontmatter.title}`}
-              >
-                Read Article →
-              </Link>
-            </Description>
+            <Description>{post.excerpt} </Description>
           </div>
         ))}
-        <Link to="/blog" aria-label="Visit blog page">
-          View all articles
-        </Link>
+        {allMdx?.edges?.length > 10 && (
+          <Link to="/blog" aria-label="Visit blog page">
+            View all articles
+          </Link>
+        )}
         <hr />
       </Container>
     </Layout>

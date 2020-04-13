@@ -2,7 +2,7 @@
   "name": "jacklaurence-blog",
   "description": "A Personal Blog",
   "version": "1.0.0",
-  "author": "Jack Laurence Garay",
+  "author": "Jack Garay",
   "repository": "https://github.com/jacklaurencegaray/final-blog",
   "dependencies": {
     "@callstack/react-theme-provider": "^3.0.5",
