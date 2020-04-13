@@ -17,7 +17,6 @@ const Header = ({ siteTitle }) => {
         flex-shrink: 0;
         background: none;
         padding: 20px 0;
-        background: ${theme.colors.headerBg};
       `}
     >
       <Container noVerticalPadding>
@@ -33,9 +32,8 @@ const Header = ({ siteTitle }) => {
             to="/"
             aria-label="go to homepage"
             css={css`
-              color: white;
+              color: ${theme.colors.text};
               &:hover {
-                color: white;
                 text-decoration: none;
               }
             `}
