@@ -12,16 +12,13 @@ module.exports = {
     title: config.siteTitle,
     twitterHandle: config.twitterHandle,
     description: config.siteDescription,
-    keywords: ['personal blog', 'blog', 'code', 'javascript', 'react'],
+    keywords: config.siteKeywords,
     canonicalUrl: config.siteUrl,
     image: config.siteLogo,
     author: {
       name: config.author,
-      minibio: `
-        <strong>egghead</strong> is the premier place on the internet for 
-        experienced developers to enhance their skills and stay current
-        in the fast-faced field of web development.
-      `,
+      minibio: config.bio,
+      photo: config.authorPhoto
     },
     organization: {
       name: config.organization,
