@@ -8,8 +8,11 @@ module.exports = {
   siteLogo: 'images/logo.png', // Used for SEO and manifest, path to your image you placed in the 'static' folder
   siteDescription:
     'A blog about mostly about code and everything I find interesting.',
+  siteKeywords: ['personal blog', 'blog', 'code', 'javascript', 'react'],
   author: 'Jack Garay', // Author for schemaORGJSONLD
+  authorPhoto: './photo.jpg',
   organization: 'Jack Laurence',
+  bio: 'I read then I write.',
 
   // siteFBAppID: '123456789', // Facebook App ID - Optional
   userTwitter: '@lawrencetecho', // Twitter Username
