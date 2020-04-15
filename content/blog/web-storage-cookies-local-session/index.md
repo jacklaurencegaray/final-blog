@@ -31,9 +31,7 @@ document.cookie = `theme=dark`
 document.cookie = `expire=${new Date('2030 May 20').toUTCString()}`
 ```
 
-Unlike other storage options, using Web API's cookies requires you to set `expire='dateInGMTorUTCString'`, the maximum expiration for a cookie is a year. This might change so always refer to [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie).
-
-Not setting the cookie's expiration date explicitly will make your set cookies expire by the end of the session (when the user closes the tab), so make sure you set them always.
+Unlike other storage options, using Web API's cookies requires you to set `expire='dateInGMTorUTCString'`. Not setting the cookie's expiration date explicitly will make your set cookies expire by the end of the session (when the user closes the tab), so make sure you set them, always!
 
 ```
 console.log(document.cookie)
@@ -113,9 +111,3 @@ Most popular browsers support this. For chrome: you can open the developer tools
 | Lasts              | You have to set an expiration date |      Forever       | As long as the tab is open |
 | Sent with Requests | Yes                                |         No         |                         No |
 | Stored by          | Client and server                  |       Client       |                     Client |
-
-## Browser Support Links:
-
-- [Local Storage](https://caniuse.com/#search=localstorage)
-- [Session Storage](https://caniuse.com/#search=localstorage)
-- [Cookies](https://caniuse.com/#search=cookie)
