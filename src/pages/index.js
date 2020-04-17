@@ -6,33 +6,8 @@ import Layout from 'components/Layout'
 import Link from 'components/Link'
 import { useTheme } from 'components/Theming'
 import Container from 'components/Container'
+import AboutAuthor from 'components/AboutAuthor'
 import { rhythm } from '../lib/typography'
-
-const Hero = () => {
-  const theme = useTheme()
-  return (
-    <section
-      css={css`
-        width: 100%;
-        padding: 20px 0 30px 0;
-        display: flex;
-      `}
-    >
-      <Container
-        css={css`
-          display: flex;
-          flex-direction: column;
-        `}
-      ></Container>
-      <div
-        css={css`
-          height: 150px;
-          overflow: hidden;
-        `}
-      />
-    </section>
-  )
-}
 
 const Description = styled.p`
   margin-bottom: 10px;
@@ -43,20 +18,29 @@ export default function Index({ data: { site, allMdx } }) {
   const theme = useTheme()
   return (
     <Layout site={site}>
-      <Hero />
       <Container
         css={css`
           padding-bottom: 0;
         `}
       >
+        <div
+          css={css`
+            margin-bottom: 80px;
+          `}
+        >
+          <AboutAuthor
+            author={site.siteMetadata.author}
+            twitterHandle={site.siteMetadata.twitterHandle}
+          />
+        </div>
         {allMdx.edges.map(({ node: post }) => (
           <div
             key={post.id}
             css={css`
-              margin-bottom: 40px;
+              margin-bottom: 60px;
             `}
           >
-            <h2
+            <h3
               css={css({
                 marginBottom: rhythm(0.3),
                 transition: 'all 150ms ease',
@@ -71,8 +55,24 @@ export default function Index({ data: { site, allMdx } }) {
               >
                 {post.frontmatter.title}
               </Link>
-            </h2>
-            <Description>{post.excerpt} </Description>
+            </h3>
+            <p
+              css={css`
+                font-size: 15px;
+                margin-bottom: 1em;
+                margin-top: 1em;
+              `}
+            >
+              {post.frontmatter.date} &nbsp;&nbsp; {post.timeToRead * 2}-minute
+              read
+            </p>
+            <Description
+              css={css`
+                font-size: 16px;
+              `}
+            >
+              {post.excerpt}{' '}
+            </Description>
           </div>
         ))}
         {allMdx?.edges?.length > 10 && (
@@ -80,7 +80,6 @@ export default function Index({ data: { site, allMdx } }) {
             View all articles
           </Link>
         )}
-        <hr />
       </Container>
     </Layout>
   )
@@ -92,6 +91,12 @@ export const pageQuery = graphql`
       ...site
       siteMetadata {
         title
+        author {
+          name
+          minibio
+          photo
+        }
+        twitterHandle
       }
     }
     allMdx(
@@ -103,6 +108,7 @@ export const pageQuery = graphql`
         node {
           excerpt(pruneLength: 190)
           id
+          timeToRead
           fields {
             title
             slug

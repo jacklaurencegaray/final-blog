@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { useTheme } from '../Theming'
 import ThemeToggler from './ThemeToggler'
 

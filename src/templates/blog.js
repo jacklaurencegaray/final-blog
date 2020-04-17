@@ -133,6 +133,7 @@ export const pageQuery = graphql`
         node {
           excerpt(pruneLength: 300)
           id
+          timeToRead
           fields {
             title
             slug

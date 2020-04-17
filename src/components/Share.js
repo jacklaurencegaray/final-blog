@@ -34,13 +34,12 @@ const Share = ({ url, title, twitterHandle }) => {
           border-top: 1px solid ${theme.colors.gray};
         `}
       />
-      <span>Share article</span>
       <TwitterShareButton
         url={url}
         quote={title}
         via={twitterHandle.split('@').join('')}
       >
-        Twitter
+        Tweet
       </TwitterShareButton>
       <FacebookShareButton
         url={url}
@@ -50,7 +49,7 @@ const Share = ({ url, title, twitterHandle }) => {
           cursor: pointer;
         `}
       >
-        Facebook
+        Share
       </FacebookShareButton>
     </div>
   )

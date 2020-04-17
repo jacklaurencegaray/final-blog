@@ -8,6 +8,8 @@ export const Twitter = ({ url = `${config.twitter}` }) => {
   const theme = useTheme()
   return (
     <Link
+      target="_blank"
+      rel="noopener"
       to={url}
       css={css`
         color: ${theme.colors.text};
@@ -38,6 +40,8 @@ export const LinkedIn = ({ url = `${config.linkedin}` }) => {
   const theme = useTheme()
   return (
     <Link
+      target="_blank"
+      rel="noopener"
       to={url}
       css={css`
         margin-left: 10px;
@@ -67,6 +71,8 @@ export const GitHub = ({ url = `${config.github}` }) => {
   const theme = useTheme()
   return (
     <Link
+      target="_blank"
+      rel="noopener"
       to={url}
       css={css`
         margin-left: 10px;

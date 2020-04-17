@@ -18,6 +18,7 @@ const getGlobalStyles = theme => {
     body {
       background: ${theme.colors.bodyBg};
       color: ${theme.colors.text};
+      transition: 250ms all;
     }
     &::selection {
       color: ${theme.colors.white};
