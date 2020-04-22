@@ -21,7 +21,7 @@ export default function AboutAuthor({ author, twitterHandle }) {
         alt={'Author'}
       />
       <div>
-        <p
+        <div
           css={css`
             margin-bottom: 6px;
           `}
@@ -40,7 +40,7 @@ export default function AboutAuthor({ author, twitterHandle }) {
               {author.name}
             </h4>
           </a>
-        </p>
+        </div>
         <p
           css={css`
             font-size: 15px;

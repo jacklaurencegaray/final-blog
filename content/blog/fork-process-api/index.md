@@ -1,7 +1,7 @@
 ---
 slug: the-unix-fork-api
-date: 2019-05-19
-title: 'A Primer on the System Call: Fork'
+date: 2020-04-22
+title: 'A Primer on a System Call: Fork'
 description: 'Getting to know the the fork system call'
 published: true
 keywords:

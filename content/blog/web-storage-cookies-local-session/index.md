@@ -1,6 +1,6 @@
 ---
 slug: web-storage-cookies-local-session
-date: 2019-05-19
+date: 2020-04-16
 title: 'Web Storage: Cookies vs Local and Session Storage'
 description: 'A simplified article describing cookies, local and session storage.'
 published: true

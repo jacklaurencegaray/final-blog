@@ -18,7 +18,7 @@ module.exports = {
     author: {
       name: config.author,
       minibio: config.bio,
-      photo: config.authorPhoto
+      photo: config.authorPhoto,
     },
     organization: {
       name: config.organization,
@@ -48,6 +48,7 @@ module.exports = {
             options: {
               backgroundColor: '#fafafa',
               maxWidth: 1035,
+              linkImagesToOriginal: true,
             },
           },
         ],

@@ -58,9 +58,9 @@ export default function Index({ data: { site, allMdx } }) {
             </h3>
             <p
               css={css`
-                font-size: 15px;
-                margin-bottom: 1em;
-                margin-top: 1em;
+                font-size: 14px;
+                margin-bottom: 0.6em;
+                margin-top: 0.8em;
               `}
             >
               {post.frontmatter.date} &nbsp;&nbsp; {post.timeToRead * 2}-minute

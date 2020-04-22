@@ -156,7 +156,7 @@ export default ({
   const toggleTheme = name => setTheme(name)
   const theme = {
     ...themes[themeName],
-    toggleTheme: toggleTheme,
+    toggleTheme,
   }
   const {
     description: siteDescription,
@@ -171,7 +171,7 @@ export default ({
   const keywords = (frontmatterKeywords || siteKeywords).join(', ')
   const description = frontmatterDescription || siteDescription
 
-  return (
+  return theme ? (
     <ThemeProvider theme={theme}>
       <Fragment>
         <Global styles={reset()} />
@@ -207,6 +207,8 @@ export default ({
         </div>
       </Fragment>
     </ThemeProvider>
+  ) : (
+    <div />
   )
 }
 
