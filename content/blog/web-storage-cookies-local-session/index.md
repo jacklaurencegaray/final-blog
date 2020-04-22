@@ -14,7 +14,6 @@ keywords:
     'web storage',
   ]
 banner: './storage.jpg'
-caption: 'something something'
 author: 'Jack Garay'
 excerpt: "Getting to know the browser's storage capabilities, their use cases, differences, and specifics."
 ---
@@ -100,7 +99,7 @@ The key difference with this and local storage is the expiration and the storage
 
 Most popular browsers support this. For chrome: you can open the developer tools (right-click anywhere on the page, then click Inspect). Go to "Application" tab. Under "Storage", you'll find all three of them:
 
-![alt text](./devtools.png 'Logo Title Text 1')
+![Dev Tools](./devtools.png 'Dev Tools')
 
 ## Summary
 
