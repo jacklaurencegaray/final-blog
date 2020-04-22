@@ -2,8 +2,6 @@ import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import { useTheme } from '../Theming'
-import { bpMaxSM } from '../../lib/breakpoints'
-import MobileMenu from './MobileMenu'
 import Links from './Links'
 
 import Container from '../Container'
@@ -62,16 +60,10 @@ const Header = ({ siteTitle }) => {
               css={css`
                 display: flex;
                 align-items: center;
-                ${bpMaxSM} {
-                  display: none;
-                }
               `}
             >
               <Links />
             </div>
-            <MobileMenu>
-              <Links />
-            </MobileMenu>
           </div>
         </nav>
       </Container>

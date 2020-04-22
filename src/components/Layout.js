@@ -1,4 +1,10 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, {
+  Fragment,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from 'react'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import { MDXProvider } from '@mdx-js/react'
@@ -153,11 +159,16 @@ export default ({
     localStorage.setItem('theme', themeName)
   }, [themeName])
 
-  const toggleTheme = name => setTheme(name)
-  const theme = {
-    ...themes[themeName],
-    toggleTheme,
-  }
+  const toggleTheme = useCallback(name => setTheme(name), [setTheme])
+
+  const theme = useMemo(
+    () => ({
+      ...themes[themeName],
+      toggleTheme,
+    }),
+    [themeName, toggleTheme],
+  )
+
   const {
     description: siteDescription,
     keywords: siteKeywords,
