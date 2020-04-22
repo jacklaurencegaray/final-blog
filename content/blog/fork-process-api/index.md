@@ -71,7 +71,7 @@ int main() {
 }
 ```
 
-The code above illustrates how `sharedValue` is shared through parent and child, and thus proves that whilst they are in **difference processes**, because the operating system "copies" or "duplicates" the address space of the parent to create a new process, the child process still has access to the values defined within the parent **at the time the process was created** via `fork()`.
+The code above illustrates how `sharedValue` is shared through parent and child, and thus proves that whilst they are in **different processes**, because the operating system "copies" or "duplicates" the address space of the parent to create a new process, the child process still has access to the values defined within the parent **at the time the process was created** via `fork()`.
 
 When `fork()` is called, the duplicate process (child) **starts executing right after the calling line**.
 
