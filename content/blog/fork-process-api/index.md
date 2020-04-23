@@ -107,3 +107,54 @@ Image: Fork in *synchrony*
 At 1, the main process called a fork which created a new process at 2. Since the child process has a duplicate code of the parent, at 2, the statements in the process at 1 is still there, except it starts executing at 3 &mdash; line 2 of the child process &mdash; which is the statement after the **the `fork()` that invoked it**.
 
 It's also important to note that the above illustration is not always the case with parent-child relationship. **It's not uncommon for the parent process to finish before the child process**. This is because processes are run by the CPU and are scheduled differently. So the sequence of events from the illustration is not the exact timing of events, but rather under the assumption that they run synchronously (which they don't). The takeaway of the illustration is to demonstrate the parent-child relationship and how `fork()` can create exponential number of processes (a parent can make a child, a child becomes a parent, and so forth).
+
+```
+int main() {
+    int value = 0;
+    int ref = fork();
+
+    if (ref == 0) {
+        // child process
+        value = 15;
+        // parent will not see this
+        // new value
+    
+    // `ref` in this case is
+    // the PID of the child process
+    // that was created by the 
+    // line 2 int ref = fork()
+    } else if (ref > 0) {
+        // parent process
+        value = 12;
+        // child will not see this
+        // new value
+    }
+}
+```
+
+In as much as both of them share similarities, they now belong to separate address space (the child has a different address space but with similar initial values to parent). If a child process changes a variable, the parent process won't be able to reflect those changes as their address space are now separate. They also get different `ref` return values from the `fork()`.
+
+```
+int main() {
+    // parent starts here
+    int value = 0;
+    int ref = fork();
+    // child starts here
+
+    // child process has ref of 0 
+    // so this condition is true 
+    // on child but not on parent
+    if (ref == 0) {
+        // child process
+        value = 15;
+    } 
+    
+    // parent process has ref with a 
+    // positive number so this condition 
+    // is true on parent but not on child
+    if (ref > 0) {
+        // parent process
+        value = 12;
+    }
+}
+```
