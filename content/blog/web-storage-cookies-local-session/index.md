@@ -27,7 +27,9 @@ Before HTML5, there were no other means of storing retrievable user information 
 ```
 document.cookie = `name=Jack`
 document.cookie = `theme=dark`
-document.cookie = `expire=${new Date('2030 May 20').toUTCString()}`
+document.cookie = `
+  expire=${new Date('2030 May 20').toUTCString()}
+`
 ```
 
 Unlike other storage options, using Web API's cookies requires you to set `expire='dateInGMTorUTCString'`. Not setting the cookie's expiration date explicitly will make your set cookies expire by the end of the session (when the user closes the tab), so make sure you set them, always!
@@ -61,7 +63,9 @@ Since HTML5, local storage provided another alternative to storing key-value pai
 /**
     window.localStorage is the more accurate way to
     access it, however, since anything we access
-    in the global scope is assumed to be under `window`, you can skip `window` and just proceed with `localStorage.<function>`
+    in the global scope is assumed to be under `window`,
+    you can skip `window` and just proceed with
+    `localStorage.<function>`
 **/
 
 // Setting and updating a property

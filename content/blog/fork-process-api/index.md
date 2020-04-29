@@ -5,29 +5,24 @@ title: 'A Primer on a System Call: Fork'
 description: 'Getting to know the the fork system call'
 published: true
 keywords:
-  [
-    'unix',
-    'api',
-    'processes',
-    'process creation',
-    'operating system',
-    'fork'
-  ]
+  ['unix', 'api', 'processes', 'process creation', 'operating system', 'fork']
 banner: './tree.jpg'
 author: 'Jack Garay'
 excerpt: "Basics on understanding fork and getting to know 'process'."
 ---
 
-The UNIX operating system process API provides a built-in functionality that allows us to create, pause,  execute, or terminate a process. The code in this article is based in [C](https://en.wikipedia.org/wiki/C_(programming_language)), but if you're not familiar with it, feel free to continue as the code isn't cryptic enough not to be understood.
+The UNIX operating system process API provides a built-in functionality that allows us to create, pause, execute, or terminate a process. The code in this article is based in [C](<https://en.wikipedia.org/wiki/C_(programming_language)>), but if you're not familiar with it, feel free to continue as the code isn't cryptic enough not to be understood.
 
 Before we dive in to the basics, let's first know what a process is. Courtesy to _UNIX Internals: The New Frontiers_: a process is the instance of a computer program that is being executed by one or many threads. Essentially, if we were to write our own program and would like to execute it, when we open that program, the operating system, under the hood, creates a process, assigns it an identifier, and then executes it on that process.
 
 A process has a property we call PID (process identifier). This PID is useful in cases where we want to tell a process to either terminate, pause, or wait. For example when you kill a process in UNIX, you can run `kill -9 <pid>` in the terminal that tells the operating system to terminate that process with that specific PID.
 
 ## Fork
+
 `fork()` is a method used to create a new process. It works in an odd way if you think about it intuitively but bare with me, this functionality is powerful.
 
 `fork()`'s return values:
+
 - negative value on unsuccessful fork
 - zero on success
 - positive value when it has returned to "parent" or "caller" (will expound on this later)
@@ -44,7 +39,8 @@ int main() {
     } else {
         // Parent starts here
         int waitRef = wait(NULL); // Ignore me for now
-        printf("I am parent with PID: %d, I have PID of: %d", rc, (int) getpid());
+        printf("I am parent with PID: %d, I have PID of: %d",
+        rc, (int) getpid());
     }
 }
 ```
@@ -60,7 +56,7 @@ int main() {
     char* sharedValue = "something";
 
     int ref = fork();
-    
+
     if (ref === 0) {
         // Child has access to `sharedValue`
         printf("%s", sharedValue);
@@ -88,13 +84,13 @@ int main() {
 We can illustrate this, however hairy and tedious, in this example source code:
 
 ```
-int main() { 
-    fork(); 
-    fork(); 
-    fork(); 
-    printf("hello\n"); 
-    return 0; 
-} 
+int main() {
+    fork();
+    fork();
+    fork();
+    printf("hello\n");
+    return 0;
+}
 ```
 
 The challenging part is counting how many `"hello"`s will be printed.
@@ -102,7 +98,7 @@ The challenging part is counting how many `"hello"`s will be printed.
 The process is hairy, hopefully the illustration below &mdash; demonstrating the control flow, and the "duplicating" of parent to child helps clear it up a bit:
 
 ![Fork Illustration](./fork.png 'Fork Illustration')
-Image: Fork in *synchrony*
+Image: Fork in _synchrony_
 
 At 1, the main process called a fork which created a new process at 2. Since the child process has a duplicate code of the parent, at 2, the statements in the process at 1 is still there, except it starts executing at 3 &mdash; line 2 of the child process &mdash; which is the statement after the **the `fork()` that invoked it**.
 
@@ -118,10 +114,10 @@ int main() {
         value = 15;
         // parent will not see this
         // new value
-    
+
     // `ref` in this case is
     // the PID of the child process
-    // that was created by the 
+    // that was created by the
     // line 2 int ref = fork()
     } else if (ref > 0) {
         // parent process
@@ -141,16 +137,16 @@ int main() {
     int ref = fork();
     // child starts here
 
-    // child process has ref of 0 
-    // so this condition is true 
+    // child process has ref of 0
+    // so this condition is true
     // on child but not on parent
     if (ref == 0) {
         // child process
         value = 15;
-    } 
-    
-    // parent process has ref with a 
-    // positive number so this condition 
+    }
+
+    // parent process has ref with a
+    // positive number so this condition
     // is true on parent but not on child
     if (ref > 0) {
         // parent process
