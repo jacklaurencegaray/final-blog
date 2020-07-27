@@ -1,13 +1,12 @@
 import Typography from 'typography'
-import '../fonts/fonts.css'
 
 export const fonts = {
-  regular: 'Inter UI Regular',
-  regularItalic: 'Inter UI Regular Italic',
-  semibold: 'Inter UI Semibold',
-  semiboldItalic: 'Inter UI Semibold Italic',
-  bold: 'Inter UI Bold',
-  boldItalic: 'Inter UI Bold Italic',
+  regular: 'Sora',
+  regularItalic: 'Sora',
+  semibold: 'Sora',
+  semiboldItalic: 'Sora',
+  bold: 'Sora',
+  boldItalic: 'Sora',
 }
 
 const typography = new Typography({

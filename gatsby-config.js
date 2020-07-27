@@ -150,6 +150,7 @@ module.exports = {
         pathToConfigModule: `src/lib/typography`,
       },
     },
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-offline',
   ],
 }

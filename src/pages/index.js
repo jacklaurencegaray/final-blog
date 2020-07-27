@@ -12,6 +12,7 @@ import { rhythm } from '../lib/typography'
 const Description = styled.p`
   margin-bottom: 10px;
   display: inline-block;
+  line-height: 2;
 `
 
 export default function Index({ data: { site, allMdx } }) {
@@ -59,8 +60,9 @@ export default function Index({ data: { site, allMdx } }) {
             <p
               css={css`
                 font-size: 14px;
-                margin-bottom: 0.6em;
+                margin-bottom: 0.8em;
                 margin-top: 0.8em;
+                line-height: 2;
               `}
             >
               {post.frontmatter.date} &nbsp;&nbsp; {post.timeToRead * 2}-minute
