@@ -27,6 +27,10 @@ const themes = {
   },
 }
 
-const { ThemeProvider, withTheme, useTheme } = createTheming(themes.default)
+const { ThemeProvider, withTheme, useTheme } = createTheming(
+  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? themes.dark
+    : themes.default,
+)
 
 export { ThemeProvider, withTheme, useTheme, themes, colors }
